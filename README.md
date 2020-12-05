@@ -1,3 +1,3 @@
 # data_science
 
-[Explanatory Data Analysis](EDA.ipynb)
+[Explanatory Data Analysis](eda.ipynb)
