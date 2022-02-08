@@ -8,4 +8,5 @@ As an example,
 - my implementation contains less then 100 lines of code (https://github.com/tevfikaytekin/data_science/blob/master/word2vec.ipynb).
 
 Any suggestions or corrections are welcome. 
+
 -Tevfik Aytekin
