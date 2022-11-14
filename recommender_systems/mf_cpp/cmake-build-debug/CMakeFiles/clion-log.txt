@@ -1,0 +1,4 @@
+/Applications/CLion.app/Contents/bin/cmake/mac/bin/cmake -DCMAKE_BUILD_TYPE=Debug -DCMAKE_MAKE_PROGRAM=/usr/bin/make -DCMAKE_C_COMPILER=/usr/bin/gcc -DCMAKE_CXX_COMPILER=/usr/bin/g++ -DCMAKE_DEPENDS_USE_COMPILER=FALSE -G "CodeBlocks - Unix Makefiles" /Users/tevfikaytekin/GoogleDrive/PycharmProjects/data_science/recommender_systems/mf_cpp
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /Users/tevfikaytekin/GoogleDrive/PycharmProjects/data_science/recommender_systems/mf_cpp/cmake-build-debug

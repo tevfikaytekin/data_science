@@ -1,0 +1,28 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/Users/tevfikaytekin/GoogleDrive/PycharmProjects/data_science/recommender_systems/mf_cpp/matrix_factorization.cpp
+iostream
+-
+unordered_map
+-
+numeric
+-
+vector
+-
+random
+-
+fstream
+-
+string
+-
+sstream
+-
+algorithm
+-
+
