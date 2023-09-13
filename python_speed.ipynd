@@ -6,17 +6,17 @@
     "id": "w0gO970LkqvJ"
    },
    "source": [
-    "# Vectorization \n",
+    "# Python loops\n",
     "(by Tevfik Aytekin)\n",
     "\n",
-    "Examples showing the speed difference between vectorization vs. for loops in Python.\n",
+    "Examples showing the speed issues of loops in Python and how to solve it. \n",
     "\n",
     "### Dot Product"
    ]
   },
   {
    "cell_type": "code",
-   "execution_count": 1,
+   "execution_count": 2,
    "metadata": {
     "colab": {
      "base_uri": "https://localhost:8080/"
@@ -39,10 +39,10 @@
      "name": "stdout",
      "output_type": "stream",
      "text": [
-      "2499925.978660608\n",
-      "For loop: 2519.7341442108154ms\n",
-      "2499925.978660428\n",
-      "Vectorized version: 8.16965103149414ms\n"
+      "249573.40109384412\n",
+      "For loop: 262.6478672027588ms\n",
+      "249573.401093843\n",
+      "Numpy version: 0.8096694946289062ms\n"
      ]
     }
    ],
@@ -50,7 +50,7 @@
     "import numpy as np\n",
     "import time\n",
     "\n",
-    "size = 10000000\n",
+    "size = 1000000\n",
     "a = np.random.rand(size)\n",
     "b = np.random.rand(size)\n",
     "\n",
@@ -69,8 +69,22 @@
     "toc = time.time()\n",
     "\n",
     "print(c)\n",
-    "print(\"Vectorized version: \"+str(1000*(toc-tic))+\"ms\")\n",
+    "print(\"Numpy version: \"+str(1000*(toc-tic))+\"ms\")\n",
     "\n"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "The main reason for this difference is that numpy library uses compiled code, on the other hand, Python loops are executed by the Python interpreter which needs to keep track of many things. Another reason might be that numpy library functions might utilize parallel programming whereas the above Python loop is sequentially executed on a single core.\n",
+    "\n",
+    "What you should do if you have a heavy computation? Here are some possibilties:\n",
+    "- Write your code in C/C++\n",
+    "- Use Cython\n",
+    "- Use only fast libraries like numpy.\n",
+    "\n",
+    "All options have pros/cons which I will not be able to discuss now. Below are some examples of using Cython and calling C/C++ functions from Python."
    ]
   },
   {
@@ -868,7 +882,7 @@
    "name": "python",
    "nbconvert_exporter": "python",
    "pygments_lexer": "ipython3",
-   "version": "3.9.17"
+   "version": "3.9.18"
   }
  },
  "nbformat": 4,
