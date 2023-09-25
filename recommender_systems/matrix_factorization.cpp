@@ -20,7 +20,7 @@ int f_cols = 4;
 void read_file(){
 
     ifstream fin;
-    fin.open ("../ratings.csv");
+    fin.open ("/home/tevfik/Documents/datasets/ml-latest-small/ratings.csv");
     if (! fin.is_open()) {
         cerr << "error: cannot open file\n";
     }
