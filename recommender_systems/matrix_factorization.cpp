@@ -11,7 +11,7 @@
 
 using namespace std;
 
-int n_factors=5;
+int n_factors=2;
 unordered_map<long, double*> u_factors;
 unordered_map<long, double*> i_factors;
 vector<double*> prefs;
