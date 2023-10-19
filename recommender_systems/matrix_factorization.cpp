@@ -10,7 +10,7 @@
 
 
 using namespace std;
-
+  
 int n_factors=2;
 unordered_map<long, double*> u_factors;
 unordered_map<long, double*> i_factors;
@@ -20,7 +20,7 @@ int f_cols = 4;
 void read_file(){
 
     ifstream fin;
-    fin.open ("/home/tevfik/Documents/datasets/ml-latest-small/ratings.csv");
+    fin.open ("../../datasets/ml-latest-small/ratings.csv");
     if (! fin.is_open()) {
         cerr << "error: cannot open file\n";
     }
