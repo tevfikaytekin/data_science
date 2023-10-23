@@ -11,7 +11,7 @@
 
 using namespace std;
   
-int n_factors=2;
+int n_factors=10;
 unordered_map<long, double*> u_factors;
 unordered_map<long, double*> i_factors;
 vector<double*> prefs;
@@ -21,13 +21,14 @@ void read_file(){
 
     ifstream fin;
     fin.open ("../../datasets/ml-latest-small/ratings.csv");
+    //fin.open ("../../datasets/ml-25m/ratings.csv");
     if (! fin.is_open()) {
         cerr << "error: cannot open file\n";
     }
 
     string line, val;
-    int i=0;
-    int k;
+    int i = 0;
+    int k = 0;
     while (getline (fin, line)) {
         if (i==0){
             i++;
@@ -43,17 +44,17 @@ void read_file(){
         prefs.push_back (f);
     }
 
-/*
-    i = 0;
-    for (double* row : prefs) {
-        for (k=0; k<f_cols; k++)
-            cout << row[k] << "  ";
-        cout << "\n";
-        i++;
-        if (i > 10)
-            break;
-    }
-*/
+
+    // i = 0;
+    // for (double* row : prefs) {
+    //     for (k=0; k<f_cols; k++)
+    //         cout << row[k] << "  ";
+    //     cout << "\n";
+    //     i++;
+    //     if (i > 10)
+    //         break;
+    // }
+
 }
 
 double dot_product(double *v1, double *v2, int size){
@@ -101,6 +102,7 @@ void sgd(){
     std::default_random_engine eng(rd());
     std::uniform_real_distribution<double> distr(MIN, MAX);
 
+    // initialize factor matrices
     for (long r=0; r<prefs.size(); r++){
         double *arr = new double[n_factors];
         for(int i=0; i<n_factors;i++){
