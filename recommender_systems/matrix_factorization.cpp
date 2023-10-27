@@ -11,7 +11,11 @@
 
 using namespace std;
   
-int n_factors=10;
+int n_factors=6;
+float alpha = 0.02;
+float my_lambda = 0.1;
+int n_iters = 100;
+
 unordered_map<long, double*> u_factors;
 unordered_map<long, double*> i_factors;
 vector<double*> prefs;
@@ -121,9 +125,7 @@ void sgd(){
     long end = (long) prefs.size()*0.9;
 
     // Stochastic Gradient descent
-    float alpha = 0.03;
-    float my_lambda = 0.1;
-    int n_iters = 100;
+
 
     printf("Initial error: %f", calc_error(0, end));
 
