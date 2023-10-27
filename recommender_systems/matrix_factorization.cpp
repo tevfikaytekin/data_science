@@ -11,9 +11,9 @@
 
 using namespace std;
   
-int n_factors=6;
-float alpha = 0.02;
-float my_lambda = 0.1;
+int n_factors=4;
+float alpha = 0.005;
+float my_lambda = 0.005;
 int n_iters = 100;
 
 unordered_map<long, double*> u_factors;
