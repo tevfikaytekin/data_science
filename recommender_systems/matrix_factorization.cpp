@@ -14,7 +14,7 @@ using namespace std;
 int n_factors=4;
 float alpha = 0.005;
 float my_lambda = 0.005;
-int n_iters = 100;
+int n_iters = 50;
 
 unordered_map<long, double*> u_factors;
 unordered_map<long, double*> i_factors;
@@ -149,11 +149,40 @@ void sgd(){
     }
 }
 
+void write_factors(){
+
+    std::ofstream userFile("user_factors.txt");
+    std::ofstream movieFile("movie_factors.txt");
+    int i;
+    for (auto& pair : u_factors) {
+        userFile << pair.first << ", ";
+        for (i=0 ; i < n_factors; i++){
+            userFile << pair.second[i];
+            if (i < n_factors-1)
+                userFile << ", ";
+        }
+        userFile << std::endl;
+    }
+    for (auto& pair : i_factors) {
+        movieFile << pair.first << ", ";
+        for (i=0 ; i < n_factors; i++){
+            movieFile << pair.second[i];
+            if (i < n_factors-1)
+                movieFile << ", ";
+        }
+        movieFile << std::endl;
+    }
+
+    userFile.close();
+    movieFile.close();
+
+}
 
 int main(){
 
     read_file();
     sgd();
+    write_factors();
 
 
     return 0;
