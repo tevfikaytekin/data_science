@@ -11,10 +11,10 @@
 
 using namespace std;
   
-int n_factors=4;
-float alpha = 0.005;
-float my_lambda = 0.005;
-int n_iters = 50;
+int n_factors=10;
+float alpha = 0.01;
+float my_lambda = 0.1;
+int n_iters = 20;
 
 unordered_map<long, double*> u_factors;
 unordered_map<long, double*> i_factors;
@@ -24,8 +24,8 @@ int f_cols = 4;
 void read_file(){
 
     ifstream fin;
-    fin.open ("../../datasets/ml-latest-small/ratings.csv");
-    //fin.open ("../../datasets/ml-25m/ratings.csv");
+    //fin.open ("../../datasets/ml-latest-small/ratings.csv");
+    fin.open ("../../datasets/ml-1m/ratings.dat");
     if (! fin.is_open()) {
         cerr << "error: cannot open file\n";
     }
@@ -127,7 +127,7 @@ void sgd(){
     // Stochastic Gradient descent
 
 
-    printf("Initial error: %f", calc_error(0, end));
+    printf("Initial error: %f\n", calc_error(0, end));
 
     for (int t=0;t<n_iters;t++){
         std::shuffle(std::begin(prefs), std::begin(prefs)+end, eng);
