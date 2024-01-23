@@ -25,7 +25,7 @@ void read_file(){
 
     ifstream fin;
     //fin.open ("../../datasets/ml-latest-small/ratings.csv");
-    fin.open ("../../datasets/ml-1m/ratings.dat");
+    fin.open ("../../datasets/ml-1m/ratings.csv");
     if (! fin.is_open()) {
         cerr << "error: cannot open file\n";
     }
