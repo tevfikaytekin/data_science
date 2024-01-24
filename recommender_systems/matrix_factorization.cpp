@@ -13,7 +13,7 @@ using namespace std;
   
 int n_factors=10;
 float alpha = 0.01;
-float my_lambda = 0.1;
+float my_lambda = 0.01;
 int n_iters = 20;
 
 unordered_map<long, double*> u_factors;
@@ -24,8 +24,10 @@ int f_cols = 4;
 void read_file(){
 
     ifstream fin;
-    //fin.open ("../../datasets/ml-latest-small/ratings.csv");
-    fin.open ("../../datasets/ml-1m/ratings.csv");
+    
+    
+    fin.open ("../../datasets/ml-latest-small/ratings.csv");
+    //fin.open ("../../datasets/ml-1m/ratings.csv");
     if (! fin.is_open()) {
         cerr << "error: cannot open file\n";
     }
@@ -85,16 +87,21 @@ double calc_error(vector<vector<double> > X, unordered_map<long, vector<double> 
 }
 */
 
-double calc_error(long start, long end){
+pair<double,double> calc_error(long start, long end){
     long u_idx, i_idx;
+    double abs_error = 0;
     double error = 0;
+    double s_error = 0;
+
     for (long i=start; i<end; i++){
         u_idx = prefs[i][0];
         i_idx = prefs[i][1];
 
-        error += abs(prefs[i][2] - dot_product(u_factors[u_idx], i_factors[i_idx], n_factors));
+        error = prefs[i][2] - dot_product(u_factors[u_idx], i_factors[i_idx], n_factors);
+        s_error += error*error;
+        abs_error += abs(error);
     }
-    return error/(end-start);
+    return make_pair(abs_error/(end-start),s_error/(end-start));
 
 }
 
@@ -126,8 +133,8 @@ void sgd(){
 
     // Stochastic Gradient descent
 
-
-    printf("Initial error: %f\n", calc_error(0, end));
+    auto result = calc_error(0, end);
+    cout << "Initial error: " << result.first << result.second << "\n";
 
     for (int t=0;t<n_iters;t++){
         std::shuffle(std::begin(prefs), std::begin(prefs)+end, eng);
@@ -144,8 +151,10 @@ void sgd(){
         }
 
         printf("Iteration %d\n", t);
-        printf("Train error: %f\n", calc_error(0, end));
-        printf("Test error: %f\n", calc_error(end, prefs.size()));
+        result = calc_error(0, end);
+        cout << "Train MAE and MSE " << result.first << " " << result.second <<"\n";
+        result = calc_error(end, prefs.size());
+        cout << "Test MAE and MSE " << result.first << " " << result.second <<"\n";
     }
 }
 
