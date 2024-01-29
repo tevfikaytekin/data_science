@@ -7,6 +7,8 @@ As an example,
 - original word2vec version contains 715 lines of code (https://github.com/tmikolov/word2vec/blob/master/word2vec.c).
 - my implementation contains less then 100 lines of code (https://github.com/tevfikaytekin/data_science/blob/master/word2vec.ipynb).
 
+Please be aware that I regularly update this repository; while many notebooks are well-established, some are still in the early stages of development.
+
 Any suggestions or corrections are welcome. 
 
 -Tevfik Aytekin
