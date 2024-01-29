@@ -133,7 +133,7 @@ void sgd(){
 
     // Stochastic Gradient descent
 
-    auto result = calc_error(0, end);
+    pair<double,double> result = calc_error(0, end);
     cout << "Initial error: " << result.first << result.second << "\n";
 
     for (int t=0;t<n_iters;t++){
