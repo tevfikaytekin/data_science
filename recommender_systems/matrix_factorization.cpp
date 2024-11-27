@@ -11,9 +11,9 @@
 
 using namespace std;
   
-int n_factors=10;
+int n_factors=20;
 float alpha = 0.01;
-float my_lambda = 0.01;
+float my_lambda = 0.03;
 int n_iters = 20;
 
 unordered_map<long, double*> u_factors;
@@ -26,8 +26,8 @@ void read_file(){
     ifstream fin;
     
     
-    fin.open ("../../datasets/ml-latest-small/ratings.csv");
-    //fin.open ("../../datasets/ml-1m/ratings.csv");
+    //fin.open ("../../datasets/ml-latest-small/ratings.csv");
+    fin.open ("../../datasets/ml-1m/ratings.csv");
     if (! fin.is_open()) {
         cerr << "error: cannot open file\n";
     }
@@ -147,6 +147,7 @@ void sgd(){
             for (int k=0; k<n_factors; k++) {
                 u_factors[u][k] = u_factors[u][k] + alpha * (error * i_factors[i][k] - my_lambda * u_factors[u][k]);
                 i_factors[i][k] = i_factors[i][k] + alpha * (error * u_factors[u][k] - my_lambda * i_factors[i][k]);
+   
             }
         }
 
